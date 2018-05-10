@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Leroy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="650" Width="800">
     <Grid>
-        
+        <TextBox x:Name="linkTB" HorizontalAlignment="Left" Height="23" Margin="58,41,0,0" TextWrapping="Wrap" Text="https://spb.leroymerlin.ru/catalogue/paneli-ldsp/?page=1" VerticalAlignment="Top" Width="500"/>
+        <Button x:Name="parseBTN" Content="Parse" HorizontalAlignment="Left" Margin="58,80,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

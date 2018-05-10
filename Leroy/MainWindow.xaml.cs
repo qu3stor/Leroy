@@ -25,4 +25,12 @@ namespace Leroy
             InitializeComponent();
         }
     }
+
+
+
+    public class Good
+    {
+        string GoodName { get; set; }
+        string GoodPrice { get; set; }
+    }
 }
