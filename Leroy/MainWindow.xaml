@@ -8,7 +8,15 @@
         Title="MainWindow" Height="650" Width="800">
     <Grid>
         <TextBox x:Name="linkTB" HorizontalAlignment="Left" Height="23" Margin="58,41,0,0" TextWrapping="Wrap" Text="https://spb.leroymerlin.ru/catalogue/paneli-ldsp/?page=1" VerticalAlignment="Top" Width="500"/>
-        <Button x:Name="parseBTN" Content="Parse" HorizontalAlignment="Left" Margin="58,80,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="parseBTN" Content="Parse" HorizontalAlignment="Left" Margin="58,80,0,0" VerticalAlignment="Top" Width="75" Click="parseBTN_Click"/>
+        <DataGrid x:Name="goodsDGRID" HorizontalAlignment="Left" Height="100" Margin="58,125,0,0" VerticalAlignment="Top" Width="500">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Name" Binding="{Binding GoodName}" Width=" 300"  />
+            <DataGridTextColumn Header="Price" Binding="{Binding GoodPrice}" Width=" *" />
+        </DataGrid.Columns>
+
+        </DataGrid>
+
 
     </Grid>
 </Window>
