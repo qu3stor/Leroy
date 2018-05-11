@@ -29,26 +29,32 @@ namespace Leroy
 
         private void parseBTN_Click(object sender, RoutedEventArgs e)
         {
-            string url = linkTB.Text;
-            var web = new HtmlWeb();
-            var doc = web.LoadFromBrowser(url);
-
-            var names = doc.DocumentNode.SelectNodes("//li[@class = 'catalog__item inner ng-scope']//p[@class = 'catalog__name']");
-            var prices = doc.DocumentNode.SelectNodes("//li[@class = 'catalog__item inner ng-scope']//p[@class = 'catalog__price ng-scope ng-binding']");
-
-            for (int i = 0; i <= names.Count - 1; i++)
+            for (int j = 1; j <= Int32.Parse(countTB.Text); j++)
             {
-                string priceNumbers = RemoveNonNumeric(prices[i].InnerText);
 
-                Good good = new Good
+
+
+                string url = linkTB.Text + "?page=" + j;
+                var web = new HtmlWeb();
+                var doc = web.LoadFromBrowser(url);
+
+                var names = doc.DocumentNode.SelectNodes("//li[@class = 'catalog__item inner ng-scope']//p[@class = 'catalog__name']");
+                var prices = doc.DocumentNode.SelectNodes("//li[@class = 'catalog__item inner ng-scope']//p[@class = 'catalog__price ng-scope ng-binding']");
+
+                for (int i = 0; i <= names.Count - 1; i++)
                 {
-                    GoodName = names[i].InnerText.Trim(),
-                    GoodPrice = priceNumbers.Remove(priceNumbers.Length - 2)
+                    string priceNumbers = RemoveNonNumeric(prices[i].InnerText);
 
-                };
+                    Good good = new Good
+                    {
+                        GoodName = names[i].InnerText.Trim(),
+                        GoodPrice = priceNumbers.Remove(priceNumbers.Length - 2)
 
-                goodsDGRID.Items.Add(good);
+                    };
 
+                    goodsDGRID.Items.Add(good);
+
+                }
             }
         }
         
