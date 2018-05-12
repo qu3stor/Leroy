@@ -45,10 +45,13 @@ namespace Leroy
                 {
                     string priceNumbers = RemoveNonNumeric(prices[i].InnerText);
 
-                    Good good = new Good
+                    Plywood good = new Plywood
                     {
                         GoodName = names[i].InnerText.Trim(),
-                        GoodPrice = priceNumbers.Remove(priceNumbers.Length - 2)
+                        GoodPrice = priceNumbers.Remove(priceNumbers.Length - 2),
+                        Height = ExtractDimensions(names[i].InnerText.Trim()).Split('-')[0],
+                        Width = ExtractDimensions(names[i].InnerText.Trim()).Split('-')[1],
+                        Depth = ExtractDimensions(names[i].InnerText.Trim()).Split('-')[2]
 
                     };
 
@@ -59,11 +62,18 @@ namespace Leroy
         }
         
 
-        public class Good
+        public abstract class Good
             
         {
            public string GoodName { get; set; }
            public string GoodPrice { get; set; }
+        }
+
+        public class Plywood : Good
+        {
+            public string Height { get; set; }
+            public string Width { get; set; }
+            public string Depth { get; set; }
         }
 
         static string RemoveNonNumeric(String str)
@@ -75,6 +85,18 @@ namespace Leroy
             return str;
 
 
+        }
+
+        static string ExtractDimensions(String str)
+        {
+            //ебучмй шабон того, что ищем в тексте [цифры от 0 до 9] один или более раза, далее х англ или х рус и снова цифры и еще раз тоже самое
+            Regex reg1 = new Regex(@"[0-9]+[xх][0-9]+[xх][0-9]+");
+            // ищем совпадения в исходной строке
+            Match m = reg1.Match(str);
+            str = m.Value.Replace('x', '-');
+            str = str.Replace('х', '-');
+
+            return str;
         }
 
     }
