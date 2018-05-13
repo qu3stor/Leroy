@@ -15,8 +15,10 @@
             <DataGridTextColumn Header="Height" Binding="{Binding Height}" Width=" 50"  />
             <DataGridTextColumn Header="Width" Binding="{Binding Width}" Width=" 50"  />
             <DataGridTextColumn Header="Depth" Binding="{Binding Depth}" Width=" 50"  />
-            <DataGridTextColumn Header="Price" Binding="{Binding GoodPrice}" Width=" *" />
-        </DataGrid.Columns>
+                <DataGridTextColumn Header="Square" Binding="{Binding Square}" Width=" 50"  />
+                <DataGridTextColumn Header="Price" Binding="{Binding GoodPrice}" Width=" 50" />
+                <DataGridTextColumn Header="Price/m2" Binding="{Binding GoodPriceM2}" Width=" *" />
+            </DataGrid.Columns>
 
         </DataGrid>
         <TextBox x:Name="countTB" HorizontalAlignment="Left" Height="23" Margin="588,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="1"/>

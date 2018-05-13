@@ -48,12 +48,14 @@ namespace Leroy
                     Plywood good = new Plywood
                     {
                         GoodName = names[i].InnerText.Trim(),
-                        GoodPrice = priceNumbers.Remove(priceNumbers.Length - 2),
+                        GoodPrice = Double.Parse(priceNumbers.Remove(priceNumbers.Length - 2)),
                         Height = ExtractDimensions(names[i].InnerText.Trim()).Split('-')[0],
                         Width = ExtractDimensions(names[i].InnerText.Trim()).Split('-')[1],
                         Depth = ExtractDimensions(names[i].InnerText.Trim()).Split('-')[2]
-
+                       
                     };
+                    good.Square = Double.Parse(good.Height) * Double.Parse(good.Width) / 1000000;
+                    good.GoodPriceM2 = good.GoodPrice / good.Square;
 
                     goodsDGRID.Items.Add(good);
 
@@ -66,7 +68,7 @@ namespace Leroy
             
         {
            public string GoodName { get; set; }
-           public string GoodPrice { get; set; }
+           public double GoodPrice { get; set; }
         }
 
         public class Plywood : Good
@@ -74,6 +76,8 @@ namespace Leroy
             public string Height { get; set; }
             public string Width { get; set; }
             public string Depth { get; set; }
+            public double Square { get; set; }
+            public double GoodPriceM2 { get; set; }
         }
 
         static string RemoveNonNumeric(String str)
