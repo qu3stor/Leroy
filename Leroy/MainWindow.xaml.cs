@@ -59,6 +59,7 @@ namespace Leroy
 
                     goodsDGRID.Items.Add(good);
 
+
                 }
             }
         }
@@ -103,5 +104,9 @@ namespace Leroy
             return str;
         }
 
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            goodsDGRID.Items.Clear();
+        }
     }
 }
